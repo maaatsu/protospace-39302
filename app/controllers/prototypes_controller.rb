@@ -4,7 +4,10 @@ class PrototypesController < ApplicationController
   before_action :author_check, only: [:edit, :update, :destroy]
 
   def index
-    @prototypes = Prototype.includes(:user)
+    @prototypes = Prototype.all
+    @prototypes.each do |prototype|
+      prototype.user # ユーザー情報を取得するためのコード（例: prototype.userでユーザー情報を取得する）
+    end
   end
 
   def new
